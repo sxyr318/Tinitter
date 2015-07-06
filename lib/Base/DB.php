@@ -1,14 +1,14 @@
 <?php
 namespace Base;
-class BD
+class DB
 {
 	// illuminateのデータベース接続設定とブートアップ
 	static function registerIlluminate(array $settings)
 	{
-		$capsule =new \illuminate\Database\Capsule\Manager;
+		$capsule = new \Illuminate\Database\Capsule\Manager;
 		$capsule->addConnection($settings);
 		$capsule->setEventDispatcher(
-			new \Illuminate\Events\Disppatche(
+			new \Illuminate\Events\Dispatcher(
 				new \Illuminate\Container\Container()
 			)
 		);
