@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 // 設定ファイルの読み込み
-require '__DIR__.'\..\config.php';
+require __DIR__.'/../config.php';
 
 // データベース接続のセットアップ
 \Base\DB::registerIlluminate($db_settings);
