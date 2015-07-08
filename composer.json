@@ -8,7 +8,7 @@
         "Respect/Validation": "0.5.*",
         "phpunit/phpunit": "3.*",
         "fzaninotto/faker": "1.3.*",
-        "uzulla/mockslimclient": "1.0.*"
+        "uzulla/mockslimclient": "dev-master"
     },
     "autoload": {
         "psr-0": {"": "lib/"}

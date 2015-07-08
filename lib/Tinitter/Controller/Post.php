@@ -1,4 +1,3 @@
-31 lines (28 sloc)  0.751 kB
 <?php
 namespace Tinitter\Controller;
 use \Tinitter\Model\Post as M_Post;
@@ -10,11 +9,13 @@ class Post
         $app = \Slim\Slim::getInstance();
         $params = $app->request->params();
         $error_list = V_Post::byArray($params);
+
         if (empty($error_list)) {
             $post = new M_Post;
             $post->nickname = $params['nickname'];
             $post->body = $params['body'];
             $post->save();
+
             $app->redirect('/');
         } else {
             $app->render(

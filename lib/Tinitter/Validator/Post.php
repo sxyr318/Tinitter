@@ -2,22 +2,23 @@
 namespace Tinitter\Validator;
 class Post extends \Respect\Validation\Validator
 {
-    static function byArray(array $params)
+    public static function byArray(array $params)
     {
         $error_list = [];
-        
-        // nickname ‚ğƒeƒXƒg
+
+        // nickname ã‚’ãƒ†ã‚¹ãƒˆ
         if (!static::alnum()->validate($params['nickname'])) {
-            $error_list['nickname'] = '”¼Šp‚Ì‰p”•¶š‚Æ‹ó”’‚¾‚¯‚É‚µ‚Ä‚¾‚³‚¢';
+            $error_list['nickname'] = 'åŠè§’ã®è‹±æ•°æ–‡å­—ã¨ç©ºç™½ã ã‘ã«ã—ã¦ã ã•ã„';
         }
         if (!static::length(1, 16)->validate($params['nickname'])) {
-            $error_list['nickname'] = '1`16•¶šˆÈ“à‚É‚µ‚Ä‚¾‚³‚¢';
+            $error_list['nickname'] = 'ï¼‘ã€œï¼‘ï¼–æ–‡å­—ä»¥å†…ã«ã—ã¦ã ã•ã„';
         }
-        
-        // body ‚ğƒeƒXƒg
+
+        // body ã‚’ãƒ†ã‚¹ãƒˆ
         if (!static::length(1, 1000)->validate($params['body'])) {
-            $error_list['body'] = '1`1000•¶šˆÈ“à‚É‚µ‚Ä‚¾‚³‚¢';
+            $error_list['body'] = 'ï¼‘ã€œï¼‘ï¼ï¼ï¼æ–‡å­—ä»¥å†…ã«ã—ã¦ã ã•ã„';
         }
+
         return $error_list;
     }
 }

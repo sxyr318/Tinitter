@@ -1,26 +1,31 @@
 <?php
-namespase Tinitter \Model;
+namespace Tinitter\Model;
 class Post extends \Illuminate\Database\Eloquent\Model
 {
-	// ƒy[ƒWw’è‚Å‚Ì“Še‚Ìæ“¾
-	static function getByPage($per_page, $page_num)
-	{
-		// ƒXƒLƒbƒv‚·‚éŒ”‚ÌŒvZ
-		$offset = $per_page*($page_num-1);
-		
-		// “Še‚ğæ“¾AŸƒy[ƒW‚Ì‘¶İ”»’è—p‚É1Œ‘½‚­æ“¾
-		$post_list = static::orderBy('id', 'DESC')
-			->take($per_page+1)->skip($offset)
-			->get()->all();
-			
-		// Ÿƒy[ƒW‚Ì‘¶İ‚ğƒ`ƒFƒbƒN
-		if(count($post_list)>$per_page) {
-			array_pop($post_list);	// Šm”F—p‚É1Œ‚ğÌ‚Ä‚é
-			$next_page_is_exist = true;
-		}
-		else {
-			$next_page_is_exist = false;
-		}
-		
-		return [$post_list, $next_page_is_exist];
+    /**
+     * ãƒšãƒ¼ã‚¸æŒ‡å®šã§ã®æŠ•ç¨¿å–å¾—
+     * @param $per_page ï¼‘ãƒšãƒ¼ã‚¸ã‚ãŸã‚Šã®ä»¶æ•°
+     * @param  int   $page_num ãƒšãƒ¼ã‚¸ç•ªå·
+     * @return array æŠ•ç¨¿ã®é…åˆ—ã¨ã€æ¬¡ãƒšãƒ¼ã‚¸å­˜åœ¨ã®ãƒ•ãƒ©ã‚°
+     */
+    public static function getByPage($per_page, $page_num)
+    {
+        // ã‚¹ã‚­ãƒƒãƒ—ã™ã‚‹ä»¶æ•°ã‚’è¨ˆç®—
+        $offset = $per_page*($page_num-1);
+
+        // æŠ•ç¨¿ã‚’å–å¾—ã€æ¬¡ãƒšãƒ¼ã‚¸å­˜åœ¨åˆ¤å®šã®ãŸã‚ã«ï¼‘ä»¶å¤šãå–å¾—
+        $post_list = static::orderBy('id', 'DESC')
+            ->take($per_page+1)->skip($offset)
+            ->get()->all();
+
+        // æ¬¡ãƒšãƒ¼ã‚¸å­˜åœ¨ã‚’ãƒã‚§ãƒƒã‚¯
+        if (count($post_list)>$per_page) {
+            array_pop($post_list); //ç¢ºèªç”¨ã®ï¼‘ä»¶ã‚’æ¨ã¦ã‚‹
+            $next_page_is_exist = true;
+        } else {
+            $next_page_is_exist = false;
+        }
+
+        return [$post_list, $next_page_is_exist];
+    }
 }

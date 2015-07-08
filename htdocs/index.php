@@ -13,9 +13,9 @@ require __DIR__.'/../config.php';
 
 // Slim初期化
 $app = new \Slim\Slim([
-	'templates.path' => TEMPLATES_DIR_PATH,
-	'view' => new \Slim\Views\Twig(),
-	'debug' => DEBUG,
+    'templates.path' => TEMPLATES_DIR_PATH,
+    'view' => new \Slim\Views\Twig(),
+    'debug' => DEBUG,
 ]);
 
 // Slimにルートを登録
