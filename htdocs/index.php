@@ -10,11 +10,14 @@ require __DIR__.'/../config.php';
 
 // Slimの初期化
 $app = new \Slim\Slim([
-	'templates.path' => TEMPLATES_DIR_PATH,
-	'view' => new \Slim\Views\Twig()
+	//'templates.path' => TEMPLATES_DIR_PATH,
+	//'view' => new \Slim\Views\Twig()
 ]);
 
 // Slimにルートを登録
-\Tinitter\Route::registration($app);
+$app->get('/', function() {
+	echo "Hello, World!";
+});
+
 // 実行
 $app->run();
